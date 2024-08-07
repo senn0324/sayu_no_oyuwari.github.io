@@ -98,7 +98,7 @@ main {
   padding: 0 1.5em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   font-size: 2em; /* フォントサイズ */
-  color: #CFB06A; /* テキストの色 *//
+  color: #CFB06A; /* テキストの色 */
 }
 
 .main-text-h3 {
@@ -119,36 +119,29 @@ main {
 /* グリッドコンテナのスタイル */
 .grid-container {
   display: grid; /* グリッドレイアウトを使用 */
-  grid-template-columns: 1fr 1fr 1fr; /* カラムの幅をフラクションで指定 */
-  gap: 20px; /* 各グリッドアイテム間のスペース */
-  padding: 20px; /* コンテナ内のパディング */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* カラムの自動調整 */
+  gap: 1em; /* 各グリッドアイテム間のスペース */
+  padding: 1em; /* コンテナ内のパディング */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
 }
 
-/* 各アーティクルのスタイル */
+/* 各グリッドアイテムのスタイル */
 .grid-item {
   background-color: rgba(114, 136, 177, 0.2); /* 背景色 */
   padding: 20px; /* 内側の余白 */
   border-radius: 10px; /* 角を丸める */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を付ける */
-  color: #FFF; /* テキストの色を白に */
+  text-align: center; /* テキストの中央揃え */
+  color: #333; /* テキストの色を暗い灰色に */
 }
 
-.image-grid img{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+/* 画像のスタイル */
+.image-grid img {
+  width: 100%; /* 幅を100%に */
+  height: auto; /* 高さを自動調整 */
+  border-radius: 10px; /* 画像の角を丸める */
+  object-fit: cover; /* 画像のオブジェクトフィット */
 }
-
-.sns-youtube {
-  aspect-ratio: 16/9;
-}
-
-.sns-youtube iframe {
-
-}
-
-
 
 .swiper-container{
   text-align: center;
@@ -192,7 +185,6 @@ main {
 #thumbs .swiper-slide-active {
   opacity: 1;
 }
-
 
 
 
