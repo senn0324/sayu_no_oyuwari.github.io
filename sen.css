@@ -118,72 +118,105 @@ main {
 
 /* グリッドコンテナのスタイル */
 .grid-container {
-  display: grid; /* グリッドレイアウトを使用 */
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* カラムの自動調整 */
-  gap: 1em; /* 各グリッドアイテム間のスペース */
-  padding: 1em; /* コンテナ内のパディング */
+  display: flex; /* フレックスボックスを使用 */
+  flex-wrap: wrap;
+  gap: 10px; /* 各アイテム間のスペース */
+  padding: 20px; /* コンテナ内のパディング */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
+  list-style: none; /* リストマーカーを非表示 */
 }
 
-/* 各グリッドアイテムのスタイル */
+/* グリッドアイテムのスタイル（親要素） */
 .grid-item {
+  flex-grow:1
   background-color: rgba(114, 136, 177, 0.2); /* 背景色 */
-  padding: 20px; /* 内側の余白 */
   border-radius: 10px; /* 角を丸める */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を付ける */
-  text-align: center; /* テキストの中央揃え */
-  color: #333; /* テキストの色を暗い灰色に */
+  overflow: hidden; /* 子要素がはみ出ないようにする */
 }
 
 /* 画像のスタイル */
-.image-grid img {
-  width: 100%; /* 幅を100%に */
-  height: auto; /* 高さを自動調整 */
-  border-radius: 10px; /* 画像の角を丸める */
-  object-fit: cover; /* 画像のオブジェクトフィット */
+.grid-item img {
+  position: absolute; /* 親要素に対して絶対位置指定 */
+  top: 0; /* 上端を親要素の上端に合わせる */
+  left: 0; /* 左端を親要素の左端に合わせる */
+  width: 100%; /* 親要素に対して100%の幅 */
+  height: 100%; /* 親要素に対して100%の高さ */
+  object-fit: cover; /* 画像が親要素を覆うようにトリミング */
 }
 
-.swiper-container{
-  text-align: center;
+/* メディアクエリでのレスポンシブ対応 */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 画面幅が768px以下の場合、2列に */
+  }
 }
-.swiper-container .swiper-slide img{
-  aspect-ratio: 16/9;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
+
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* 画面幅が600px以下の場合、1列に */
+  }
 }
+
+
+/* スライダーコンテナのスタイル */
+.swiper-container {
+  text-align: center; /* 中央揃え */
+}
+
+/* スライダー内の画像のスタイル */
+.swiper-container .swiper-slide img {
+  aspect-ratio: 16/9; /* アスペクト比を16:9に設定 */
+  max-width: 100%; /* 最大幅を100%に設定 */
+  width: 100%; /* 幅を100%に設定 */
+  height: auto; /* 高さを自動調整 */
+}
+
+/* スライダー内の各スライドのスタイル */
 .swiper-container .swiper-slide {
-  position: relative;
-  width: 100%;
+  position: relative; /* 相対位置指定 */
+  width: 100%; /* 幅を100%に設定 */
 }
+
+/* スライダー内の各スライドの比率を維持するための擬似要素 */
 .swiper-container .swiper-slide:before {
-  content:"";
-  display: block;
-  padding-top: 56.25%;
+  content: ""; /* 擬似要素の内容を空に(アスペクト比率維持のためのコード) */
+  display: block; /* ブロック要素に設定 */
+  aspect-ratio: 16/9;
 }
+
+/* スライダー内のiframe（YouTubeなどの埋め込み動画）のスタイル */
 .swiper-container .swiper-slide iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute; /* 絶対位置指定 */
+  top: 0; /* 上端を0に設定 */
+  left: 0; /* 左端を0に設定 */
+  width: 100%; /* 幅を100%に設定 */
+  height: 100%; /* 高さを100%に設定 */
 }
+
+/* サムネイルコンテナのスタイル */
 #thumbs {
-  height: 20%;
-  box-sizing: border-box;
-  padding: 10px 0;
+  height: 20%; /* 高さを20%に設定 */
+  box-sizing: border-box; /* ボックスサイズをボーダーボックスに設定 */
+  padding: 10px 0; /* 上下のパディングを10pxに設定 */
 }
+
+/* サムネイル内の各スライドのスタイル */
 #thumbs .swiper-slide {
-  width: 20%;
-  height: 100%;
-  opacity: 0.2;
-  cursor: pointer;
+  width: 20%; /* 幅を20%に設定 */
+  height: 100%; /* 高さを100%に設定 */
+  opacity: 0.2; /* 透明度を0.2に設定 */
+  cursor: pointer; /* マウスカーソルをポインタに変更 */
 }
+
+/* サムネイルの擬似要素をリセット */
 #thumbs .swiper-slide:before {
-  content:none;
+  content: none; /* 擬似要素の内容を削除 */
 }
+
+/* アクティブなサムネイルスライドのスタイル */
 #thumbs .swiper-slide-active {
-  opacity: 1;
+  opacity: 1; /* 透明度を1に設定（完全に不透明） */
 }
 
 
