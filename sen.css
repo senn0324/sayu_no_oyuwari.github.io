@@ -19,7 +19,6 @@
   font-family: "Hina Mincho", serif; /* Hina Minchoフォントを使用 */
 }
 
-/* ヘッダーのスタイル */
 header {
   width: 100%; /* ヘッダーの幅を画面全体に設定 */
   padding: 0; /* 内側の余白をなくす */
@@ -28,6 +27,10 @@ header {
   align-items: center; /* 垂直方向の中央揃え */
   justify-content: space-between; /* 子要素の間にスペースを配置 */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
+  position: fixed; /* ヘッダーを固定 */
+  top: 0; /* 画面の上端に固定 */
+  left: 0; /* 画面の左端に固定 */
+  z-index: 1000; /* 他の要素の上に表示 */
 }
 
 /* 見出しのスタイル */
@@ -69,7 +72,7 @@ main {
   position: relative; /* 相対位置に配置 */
   width: 100%; /* 幅を画面全体に設定 */
   min-height: 100vh; /* ビューポートの高さに応じた最小高さを設定 */
-  padding: 1.5em 2em; /* 上下に50pxのパディング */
+  padding: 0em 2em; /* 上下に50pxのパディング */
   background-color: #3A555F; /* 背景色 */
   text-align: left; /* 左揃え */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
@@ -86,16 +89,16 @@ main {
   font-size: 1.5em; /* フォントサイズ */
   font-family: 'Hina Mincho', serif; /* フォント設定 */
   color: #CFB06A; /* テキストの色 */
-  padding: 10px; /* 内側の余白 */
+  padding: 0em 3em; /* 内側の余白 */
   border-radius: 5px; /* 角を丸める */
-  margin-bottom: 20px; /* 下部に余白を追加 */
+  margin-bottom: 1em; /* 下部に余白を追加 */
 }
 
 
 .main-text-h2 {
   font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
   margin: 0; /* 外側の余白をなくす */
-  padding: 0 1.5em; /* 左右に内側余白を追加 */
+  padding: 0 1em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   font-size: 2em; /* フォントサイズ */
   color: #CFB06A; /* テキストの色 */
@@ -104,7 +107,7 @@ main {
 .main-text-h3 {
   font-size: 1.5em; /* フォントサイズ */
   font-family: 'Hina Mincho', serif; /* フォント設定 */
-   padding: 0 4em; /* 左右に内側余白を追加 */
+   padding: 0 1.5em; /* 左右に内側余白を追加 */
   color: #CFB06A; /* テキストの色 */
   margin: 10px 0; /* 上下に余白を追加 */
 }
@@ -120,41 +123,50 @@ main {
 .grid-container {
   display: flex; /* フレックスボックスを使用 */
   flex-wrap: wrap;
+  align-items: flex-end; /* 水平方向の位置を下端に揃える */
+  width: 100%; /* コンテナの幅をウィンドウに合わせる */
+  max-width: 200vh; /* コンテナの最大幅を設定 */
   gap: 10px; /* 各アイテム間のスペース */
   padding: 20px; /* コンテナ内のパディング */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
   list-style: none; /* リストマーカーを非表示 */
+  margin: 0 auto; /* コンテナを中央揃え */
 }
 
 /* グリッドアイテムのスタイル（親要素） */
 .grid-item {
-  flex-grow:1
+  flex: 1 1 calc(33.333% - 20px); /* アイテムが利用可能な空間を均等に分配 */
   background-color: rgba(114, 136, 177, 0.2); /* 背景色 */
   border-radius: 10px; /* 角を丸める */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を付ける */
   overflow: hidden; /* 子要素がはみ出ないようにする */
+  position: relative; /* 子要素の絶対位置指定の基準 */
+  margin-bottom: 10px; /* 下部にマージンを追加 */
 }
 
 /* 画像のスタイル */
 .grid-item img {
-  position: absolute; /* 親要素に対して絶対位置指定 */
-  top: 0; /* 上端を親要素の上端に合わせる */
-  left: 0; /* 左端を親要素の左端に合わせる */
   width: 100%; /* 親要素に対して100%の幅 */
-  height: 100%; /* 親要素に対して100%の高さ */
+  height: auto; /* 高さを自動調整 */
   object-fit: cover; /* 画像が親要素を覆うようにトリミング */
 }
 
 /* メディアクエリでのレスポンシブ対応 */
+@media (max-width: 1024px) {
+  .grid-item {
+    flex: 1 1 calc(50% - 20px); /* 画面幅が1024px以下の場合、2列に */
+  }
+}
+
 @media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr); /* 画面幅が768px以下の場合、2列に */
+  .grid-item {
+    flex: 1 1 calc(50% - 10px); /* 画面幅が768px以下の場合、2列に */
   }
 }
 
 @media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: 1fr; /* 画面幅が600px以下の場合、1列に */
+  .grid-item {
+    flex: 1 1 100%; /* 画面幅が600px以下の場合、1列に */
   }
 }
 
@@ -232,11 +244,13 @@ main {
 
 /* フッターのスタイル */
 footer {
-  width: 100%; /* フッターの幅を画面全体に設定 */
-  height: 50px; /* 高さを50pxに設定 */
-
-  text-align: center; /* 中央揃え */
-  box-sizing: border-box; /* パディングを含むボックスサイズ */
+  position: fixed; /* フッターを固定 */
+  bottom: 0; /* 画面の下部に配置 */
+  right: 0; /* 画面の左端に配置 */
+  width: 30%; /* フッターの幅を画面全体に設定 */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* 上端に影を付ける */
+  z-index: 1000; /* 他の要素の上に表示 */
+  padding: 10px 0; /* 上下のパディング */
 }
 
 .footer-text {
