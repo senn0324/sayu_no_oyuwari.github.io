@@ -72,7 +72,7 @@ main {
   position: relative; /* 相対位置に配置 */
   width: 100%; /* 幅を画面全体に設定 */
   min-height: 100vh; /* ビューポートの高さに応じた最小高さを設定 */
-  padding: 0em 2em; /* 上下に50pxのパディング */
+  padding: 3em 0em; /* 上下に50pxのパディング */
   background-color: #3A555F; /* 背景色 */
   text-align: left; /* 左揃え */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
@@ -247,10 +247,18 @@ footer {
   position: fixed; /* フッターを固定 */
   bottom: 0; /* 画面の下部に配置 */
   right: 0; /* 画面の左端に配置 */
-  width: 30%; /* フッターの幅を画面全体に設定 */
+  width: 50%; /* フッターの幅を画面全体に設定 */
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* 上端に影を付ける */
   z-index: 1000; /* 他の要素の上に表示 */
   padding: 10px 0; /* 上下のパディング */
+}
+
+/* スマホの場合のスタイル */
+@media (max-width: 1000px) {
+  footer {
+    width: 100%; /* スマホでは幅を100%に設定 */
+    right: 0; /* 右端に配置 */
+  }
 }
 
 .footer-text {
