@@ -68,7 +68,7 @@ header {
 }
 
 /* メディアクエリでレスポンシブデザインを実装 */
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   header {
     flex-direction: column; /* ヘッダー内の要素を縦方向に配置 */
     
@@ -76,7 +76,7 @@ header {
 
   .headline {
     padding: 0 2em; /* 内側余白を調整 */
-    font-size: 1.2em; /* フォントサイズを縮小 */
+    font-size: 3vw; /* ビューポート幅に基づいてフォントサイズを設定 */
   }
 
   .nav-list {
@@ -87,18 +87,27 @@ header {
 
   .nav-list-item {
     margin: 1em 0; /* 各アイテムの上下に余白を追加 */
-    font-size: 1.5em; /* フォントサイズを縮小 */
+    font-size: 2.5vw; /* ビューポート幅に基づいてフォントサイズを設定 */
   }
 }
 
-@media (max-width: 480px) {
+/* メディアクエリでレスポンシブデザインを実装 */
+@media (max-width: 950px) {
+
+  header {
+    flex-direction: column; /* ヘッダー内の要素を縦方向に配置 */
+    
+  }
+
   .headline {
-    font-size: 1em; /* フォントサイズをさらに縮小 */
+    padding: 0 3em; /* 左右に余裕を持たせる */
+    font-size: 1em; /* フォントサイズを縮小 */
   }
 
   .nav-list-item {
-    margin: 1em 0; /* 各アイテムの上下に余白を追加 */
-    font-size: 1.2em; /* フォントサイズをさらに縮小 */
+    margin: 0.5em 0; /* 上下にマージンを追加 */
+    padding: 0 1em; /* 左右に余裕を持たせる */
+    font-size: 0.9em; /* フォントサイズを調整 */
   }
 }
 
@@ -107,7 +116,7 @@ main {
   position: relative; /* 相対位置に配置 */
   width: 100%; /* 幅を画面全体に設定 */
   min-height: 100vh; /* ビューポートの高さに応じた最小高さを設定 */
-  padding: 3em 0em; /* 上下に50pxのパディング */
+  padding: 4em 0em; /* 上下に50pxのパディング */
   background-color: #3A555F; /* 背景色 */
   text-align: left; /* 左揃え */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
@@ -132,19 +141,31 @@ main {
 
 .main-text-h2 {
   font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
-  margin: 0; /* 外側の余白をなくす */
+  font-size: 2em; /* フォントサイズ */
+  margin: 1em 0em; /* 外側の余白を上下に追加 */
   padding: 0 1em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
-  font-size: 2em; /* フォントサイズ */
   color: #CFB06A; /* テキストの色 */
 }
 
 .main-text-h3 {
-  font-size: 1.5em; /* フォントサイズ */
   font-family: 'Hina Mincho', serif; /* フォント設定 */
-   padding: 0 1.5em; /* 左右に内側余白を追加 */
-  color: #CFB06A; /* テキストの色 */
+  font-size: 1.5em; /* フォントサイズ */
+  margin: 0em 0em; /* 外側の余白をなくす */
+  padding: 0 1.5em; /* 左右に内側余白を追加 */
+  text-align: start; /* 左揃え */
   margin: 10px 0; /* 上下に余白を追加 */
+  color: #CFB06A; /* テキストの色 */
+}
+
+.main-text-h4 {
+  font-family: 'Hina Mincho', serif; /* フォント設定 */
+  font-size: clamp(0.5em, 2.5vw, 1em); /* 最小1em、最大2em、推奨2.5vwでフォントサイズを設定 */
+  margin: 0em 0em; /* 外側の余白をなくす */
+  padding: 0.2em 0.2em; /* 左右に内側余白を追加 */
+  text-align: start; /* 左揃え */
+  margin: 10px 0; /* 上下に余白を追加 */
+  color: #CFB06A; /* テキストの色 */
 }
 
 /* ハイライトされたテキストのスタイル */
@@ -177,6 +198,17 @@ main {
   overflow: hidden; /* 子要素がはみ出ないようにする */
   position: relative; /* 子要素の絶対位置指定の基準 */
   margin-bottom: 10px; /* 下部にマージンを追加 */
+}
+
+/* テキストのスタイル */
+.grid-item text {
+  font-family: 'Hina Mincho', serif; /* フォント設定 */
+  font-size: clamp(0.5em, 2.5vw, 1em); /* 最小1em、最大2em、推奨2.5vwでフォントサイズを設定 */
+  margin: 0em 0em; /* 外側の余白をなくす */
+  padding: 0.2em 0.2em; /* 左右に内側余白を追加 */
+  text-align: start; /* 左揃え */
+  margin: 10px 0; /* 上下に余白を追加 */
+  color: #CFB06A; /* テキストの色 */
 }
 
 /* 画像のスタイル */
