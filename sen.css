@@ -67,6 +67,41 @@ header {
   color: inherit; /* 親要素の色を継承 */
 }
 
+/* メディアクエリでレスポンシブデザインを実装 */
+@media (max-width: 900px) {
+  header {
+    flex-direction: column; /* ヘッダー内の要素を縦方向に配置 */
+    
+  }
+
+  .headline {
+    padding: 0 2em; /* 内側余白を調整 */
+    font-size: 1.2em; /* フォントサイズを縮小 */
+  }
+
+  .nav-list {
+    padding: 0 1em; /* 内側余白を調整 */
+    justify-content: flex-start; /* 左揃え */
+    flex-wrap: wrap; /* ナビゲーションリストを折り返し可能に */
+  }
+
+  .nav-list-item {
+    margin: 1em 0; /* 各アイテムの上下に余白を追加 */
+    font-size: 1.5em; /* フォントサイズを縮小 */
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 1em; /* フォントサイズをさらに縮小 */
+  }
+
+  .nav-list-item {
+    margin: 1em 0; /* 各アイテムの上下に余白を追加 */
+    font-size: 1.2em; /* フォントサイズをさらに縮小 */
+  }
+}
+
 /* メインコンテンツのスタイル */
 main {
   position: relative; /* 相対位置に配置 */
