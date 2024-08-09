@@ -116,15 +116,15 @@
 <article>
   <h2 class="main-text-h2"><a name="Game">Game</a></h2>
   <details>
-    <summary class="main-title">恋しい貴方を地に堕とす</summary>
+    <summary class="main-text-h3">恋しい貴方を地に堕とす</summary>
 
      <ul class="grid-container">
         <li class="grid-item">
           <h4>「このゲーム、三時間でクリアしてよ」</h4>
-          <h4 class="main-text-h4">自分に似たキャラが写るゲームを差し出し</h4>
-          <h4 class="main-text-h4">あなたの恋人が微笑む。</h4>
-          <h4 class="main-text-h4">渡されたゲームには”恋愛シミュレーション”と</h4>
-          <h4 class="main-text-h4">印字されていた</h4>
+          <h4>自分に似たキャラが写るゲームを差し出した</h4>
+          <h4>あなたの恋人は微笑む。</h4>
+          <h4>渡されたゲームには”恋愛シミュレーション”と</h4>
+          <h4>印字されていた</h4>
         </li>
         <li class="grid-item">
           <h2 class="main-text-h4">Game</h2>
@@ -183,24 +183,26 @@
 
 
 <script>
-  // メインのスライダーを初期化
-  var slider = new Swiper('#slider', {
-    nextButton: '.swiper-button-next',  // 次へボタンのセレクタを指定
-    prevButton: '.swiper-button-prev'   // 前へボタンのセレクタを指定
-  });
 
-  // サムネイルスライダーを初期化
-  var thumbs = new Swiper('#thumbs', {
-    centeredSlides: true,               // スライドを中央に配置
-    spaceBetween: 10,                   // スライド間のスペースを設定
-    slidesPerView: "auto",              // 表示されるスライド数を自動調整
-    touchRatio: 0.2,                    // スワイプの感度を調整
-    slideToClickedSlide: true           // サムネイルクリックでメインスライドに移動
-  });
+// メインのスライダーを初期化
+var slider = new Swiper('#slider', {
+  nextButton: '.swiper-button-next',  // 次へボタンのセレクタを指定
+  prevButton: '.swiper-button-prev'   // 前へボタンのセレクタを指定
+});
 
-  // メインスライダーとサムネイルスライダーを同期させる
-  slider.params.control = thumbs;
-  thumbs.params.control = slider;
+// サムネイルスライダーを初期化
+var thumbs = new Swiper('#thumbs', {
+  centeredSlides: true,               // スライドを中央に配置
+  spaceBetween: 10,                   // スライド間のスペースを設定
+  slidesPerView: "auto",              // 表示されるスライド数を自動調整
+  touchRatio: 0.2,                    // スワイプの感度を調整
+  slideToClickedSlide: true           // サムネイルクリックでメインスライドに移動
+});
+
+// メインスライダーとサムネイルスライダーを同期させる
+slider.params.control = thumbs;
+thumbs.params.control = slider;
+
 </script>
 
 </body>
