@@ -141,8 +141,8 @@ main {
 
 .main-text-h2 {
   font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
-  font-size: 2em; /* フォントサイズ */
-  margin: 1em 0em; /* 外側の余白を上下に追加 */
+  font-size: clamp(1rem, 4vw, 4em); /* 最小,画面幅何%,最大*/
+  margin: 1em 0; /* 外側の余白を上下に追加 */
   padding: 0 1em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   color: #CFB06A; /* テキストの色 */
@@ -150,7 +150,7 @@ main {
 
 .main-text-h3 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
-  font-size: 1.5em; /* フォントサイズ */
+  font-size: clamp(0.8rem, 3vw, 3em); /* 最小,画面幅何%,最大*/
   margin: 0em 0em; /* 外側の余白をなくす */
   padding: 0 1.5em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
@@ -168,9 +168,21 @@ main {
   color: #CFB06A; /* テキストの色 */
 }
 
+.main-text-Linktext {
+  font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
+  font-size: 2em; /* フォントサイズ */
+  margin: 1em 0em; /* 外側の余白を上下に追加 */
+  padding: 0 1em; /* 左右に内側余白を追加 */
+  text-align: center; /* 中央揃え */
+  color: #CFB06A; /* テキストの色 */
+
+}
+
+
+
 /* ハイライトされたテキストのスタイル */
 .highlight {
-  font-size: 1.2em; /* フォントサイズ */
+  font-size: clamp(0.8rem, 3.5vw, 3.5em); /* 最小,画面幅何%,最大*/
   transition: font-size 0.5s ease, color 0.5s ease; /* サイズ変化と色のアニメーション */
 }
 
@@ -179,7 +191,7 @@ main {
 .grid-container {
   display: flex; /* フレックスボックスを使用 */
   flex-wrap: wrap;
-  align-items: flex-end; /* 水平方向の位置を下端に揃える */
+  align-items: stretch;
   width: 100%; /* コンテナの幅をウィンドウに合わせる */
   max-width: 200vh; /* コンテナの最大幅を設定 */
   gap: 10px; /* 各アイテム間のスペース */
@@ -191,7 +203,6 @@ main {
 
 /* グリッドアイテムのスタイル（親要素） */
 .grid-item {
-  
   flex: 1 1 calc(33.333% - 20px); /* アイテムが利用可能な空間を均等に分配 */
   background-color: rgba(114, 136, 177, 0.2); /* 背景色 */
   border-radius: 10px; /* 角を丸める */
@@ -203,12 +214,11 @@ main {
 
 /* 各グリッドアイテム内のテキストスタイル */
 .grid-item h4, 
-.grid-item h2 {
+.grid-item a {
   font-family: 'Hina Mincho', serif;
   font-size: clamp(0.5rem, 1.3vw, 2.5em); /* フレックスボックスに応じた動的なフォントサイズ */
   margin: 10px 0;
   padding: 0.2em 0.2em;
-  text-align: start;
   color: #CFB06A;
   flex-grow: 1; 
 }
@@ -225,8 +235,8 @@ main {
   .grid-item {
     flex: 1 1 calc(50% - 20px); /* 画面幅が1024px以下の場合、2列に */
   }
-.grid-item h4, 
-.grid-item h2 {
+.grid-item h4,
+.grid-item a  {
   font-size: clamp(0.5rem, 2vw, 2.5em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
@@ -235,8 +245,8 @@ main {
   .grid-item {
     flex: 1 1 100%; /* 画面幅が600px以下の場合、1列に */
   }
-.grid-item h4, 
-.grid-item h2 {
+.grid-item h4,
+.grid-item a {
   font-size: clamp(0.5rem, 4vw, 2.5em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
