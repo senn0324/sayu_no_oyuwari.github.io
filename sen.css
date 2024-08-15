@@ -216,9 +216,9 @@ main {
 .grid-item h4, 
 .grid-item a {
   font-family: 'Hina Mincho', serif;
-  font-size: clamp(0.5rem, 1.3vw, 2.5em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 1.3vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   margin: 10px 0;
-  padding: 0.2em 0.2em;
+  padding: 0.2em 1vw;
   color: #CFB06A;
   flex-grow: 1; 
 }
@@ -237,7 +237,7 @@ main {
   }
 .grid-item h4,
 .grid-item a  {
-  font-size: clamp(0.5rem, 2vw, 2.5em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 2vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
 
@@ -247,7 +247,7 @@ main {
   }
 .grid-item h4,
 .grid-item a {
-  font-size: clamp(0.5rem, 3vw, 2.5em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 3vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
 
