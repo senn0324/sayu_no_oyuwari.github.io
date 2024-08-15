@@ -149,6 +149,18 @@ main {
 }
 
 .main-text-h3 {
+  font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
+  font-size: clamp(1rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
+  margin: 1em 0; /* 外側の余白を上下に追加 */
+  padding: 0 1em; /* 左右に内側余白を追加 */
+  text-align: start; /* 左揃え */
+  color: #CFB06A; /* テキストの色 */
+}
+.indent {
+  text-indent: 5vw; /* インデントの幅を指定 */
+}
+
+.main-text-h4 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
   font-size: clamp(0.8rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
   margin: 0em 0em; /* 外側の余白をなくす */
@@ -158,7 +170,7 @@ main {
   color: #CFB06A; /* テキストの色 */
 }
 
-.main-text-h4 {
+.main-text-h5 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
   font-size: clamp(0.5em, 2.5vw, 1em); /* 最小1em、最大2em、推奨2.5vwでフォントサイズを設定 */
   margin: 0em 0em; /* 外側の余白をなくす */
@@ -212,7 +224,7 @@ main {
 }
 
 /* 各グリッドアイテム内のテキストスタイル */
-.grid-item h4, 
+.grid-item h5, 
 .grid-item a {
   font-family: 'Hina Mincho', serif;
   font-size: clamp(0.5rem, 1.3vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
