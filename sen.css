@@ -195,10 +195,10 @@ main {
   width: 100%; /* コンテナの幅をウィンドウに合わせる */
   max-width: 200vh; /* コンテナの最大幅を設定 */
   gap: 10px; /* 各アイテム間のスペース */
-  padding: 20px; /* コンテナ内のパディング */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
   list-style: none; /* リストマーカーを非表示 */
   margin: 0 auto; /* コンテナを中央揃え */
+  padding: 0; /* 不要なパディングをリセット */
 }
 
 /* グリッドアイテムのスタイル（親要素） */
@@ -209,7 +209,6 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を付ける */
   overflow: hidden; /* 子要素がはみ出ないようにする */
   position: relative; /* 子要素の絶対位置指定の基準 */
-  margin-bottom: 10px; /* 下部にマージンを追加 */
 }
 
 /* 各グリッドアイテム内のテキストスタイル */
@@ -227,7 +226,9 @@ main {
 .grid-item img {
   width: 100%; /* 親要素に対して100%の幅 */
   height: auto; /* 高さを自動調整 */
-  object-fit: cover; /* 画像が親要素を覆うようにトリミング */
+  padding: 0px; /* 余白を取り除く */
+  object-fit: contain; /* 画像が親要素内で収まるようにする */
+  display: block; /* インライン要素からブロック要素に変更 */
 }
 
 /* メディアクエリでのレスポンシブ対応 */
