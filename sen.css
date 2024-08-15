@@ -192,9 +192,9 @@ main {
   display: flex; /* フレックスボックスを使用 */
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%; /* コンテナの幅をウィンドウに合わせる */
+  width: calc(100% - 7vw); /* 左右のスペースを考慮して幅を調整 */
   max-width: 200vh; /* コンテナの最大幅を設定 */
-  gap: 10px; /* 各アイテム間のスペース */
+  gap: 20px; /* 各アイテム間のスペース */
   box-sizing: border-box; /* パディングを含むボックスサイズ */
   list-style: none; /* リストマーカーを非表示 */
   margin: 0 auto; /* コンテナを中央揃え */
@@ -256,6 +256,20 @@ main {
 /* スライダーコンテナのスタイル */
 .swiper-container {
   text-align: center; /* 中央揃え */
+}
+
+/* 画面サイズが1024ピクセル以下の場合 */
+@media (max-width: 1024px) {
+  .swiper-container {
+    width: 100%; /* 幅を100%に設定 */
+  }
+}
+
+/* 画面サイズが1024ピクセル以上の場合 */
+@media (min-width: 1025px) {
+  .swiper-container {
+    width: 1024px; /* 幅を1024pxに設定 */
+  }
 }
 
 /* スライダー内の画像のスタイル */
