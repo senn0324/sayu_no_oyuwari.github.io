@@ -221,6 +221,8 @@ main {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を付ける */
   overflow: hidden; /* 子要素がはみ出ないようにする */
   position: relative; /* 子要素の絶対位置指定の基準 */
+  align-items: flex-start; /* 子要素を上部に揃える */
+
 }
 
 /* 各グリッドアイテム内のテキストスタイル */
@@ -238,9 +240,10 @@ main {
 .grid-item img {
   width: 100%; /* 親要素に対して100%の幅 */
   height: auto; /* 高さを自動調整 */
-  padding: 0px; /* 余白を取り除く */
+  padding: 0; /* 余白を取り除く */
   object-fit: contain; /* 画像が親要素内で収まるようにする */
   display: block; /* インライン要素からブロック要素に変更 */
+  align-self: flex-start; /* フレックスアイテム内で上部に配置 */
 }
 
 /* メディアクエリでのレスポンシブ対応 */
