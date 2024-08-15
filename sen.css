@@ -141,7 +141,7 @@ main {
 
 .main-text-h2 {
   font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
-  font-size: clamp(1rem, 4vw, 4em); /* 最小,画面幅何%,最大*/
+  font-size: clamp(1rem, 4vw, 3em); /* 最小,画面幅何%,最大*/
   margin: 1em 0; /* 外側の余白を上下に追加 */
   padding: 0 1em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
@@ -150,7 +150,7 @@ main {
 
 .main-text-h3 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
-  font-size: clamp(0.8rem, 3vw, 3em); /* 最小,画面幅何%,最大*/
+  font-size: clamp(0.8rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
   margin: 0em 0em; /* 外側の余白をなくす */
   padding: 0 1.5em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
@@ -182,7 +182,7 @@ main {
 
 /* ハイライトされたテキストのスタイル */
 .highlight {
-  font-size: clamp(0.8rem, 3.5vw, 3.5em); /* 最小,画面幅何%,最大*/
+  font-size: clamp(0.8rem, 3.5vw, 2.2em); /* 最小,画面幅何%,最大*/
   transition: font-size 0.5s ease, color 0.5s ease; /* サイズ変化と色のアニメーション */
 }
 
