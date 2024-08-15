@@ -122,9 +122,13 @@ main {
   box-sizing: border-box; /* パディングを含むボックスサイズ */
 }
 
+summary {
+  margin: 0em 0em;
+  padding: 0em 0em;
+  text-align: left; /* テキストの左揃えを指定 */
+}
+
 .main-item {
-
-
 }
 
 /* テキストのスタイル */
@@ -151,7 +155,7 @@ main {
 .main-text-h3 {
   font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
   font-size: clamp(1rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
-  margin: 1em 0; /* 外側の余白を上下に追加 */
+  margin: 1em 3em; /* 外側の余白を上下に追加 */
   padding: 0 1em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   color: #CFB06A; /* テキストの色 */
@@ -163,7 +167,7 @@ main {
 .main-text-h4 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
   font-size: clamp(0.8rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
-  margin: 0em 0em; /* 外側の余白をなくす */
+  margin: 0em 4vw; /* 外側の余白をなくす */
   padding: 0 1.5em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   margin: 10px 0; /* 上下に余白を追加 */
@@ -173,7 +177,7 @@ main {
 .main-text-h5 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
   font-size: clamp(0.5em, 2.5vw, 1em); /* 最小1em、最大2em、推奨2.5vwでフォントサイズを設定 */
-  margin: 0em 0em; /* 外側の余白をなくす */
+  margin: 0em 5vw; /* 外側の余白をなくす */
   padding: 0.2em 0.2em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   margin: 10px 0; /* 上下に余白を追加 */
@@ -198,6 +202,23 @@ main {
   transition: font-size 0.5s ease, color 0.5s ease; /* サイズ変化と色のアニメーション */
 }
 
+/* Main コンテナのスタイル */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
+
+/* 画像のスタイル */
+.main-image {
+  width: 100%; /* 任意の幅を指定 */
+  height: 20vw; /* 任意の高さを指定 */
+  object-fit: cover; /* 画像が指定されたサイズに収まるように調整 */
+  display: block;
+  margin-bottom: 1em; /* 画像の下にスペースを追加（必要に応じて） */
+
+}
 
 /* グリッドコンテナのスタイル */
 .grid-container {
@@ -245,7 +266,7 @@ main {
   .grid-item {
     flex: 1 1 calc(50% - 20px); /* 画面幅が1500px以下の場合、2列に */
   }
-.grid-item h4,
+.grid-item h5,
 .grid-item a  {
   font-size: clamp(0.5rem, 2vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
@@ -255,7 +276,7 @@ main {
   .grid-item {
     flex: 1 1 100%; /* 画面幅が1024px以下の場合、1列に */
   }
-.grid-item h4,
+.grid-item h5,
 .grid-item a {
   font-size: clamp(0.5rem, 3vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
