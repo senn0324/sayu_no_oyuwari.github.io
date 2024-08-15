@@ -201,49 +201,43 @@ main {
 
 /* グリッドコンテナのスタイル */
 .grid-container {
-  display: flex; /* フレックスボックスを使用 */
+  display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
-  width: calc(100% - 7vw); /* 左右のスペースを考慮して幅を調整 */
-  max-width: 200vh; /* コンテナの最大幅を設定 */
-  gap: 20px; /* 各アイテム間のスペース */
-  box-sizing: border-box; /* パディングを含むボックスサイズ */
-  list-style: none; /* リストマーカーを非表示 */
-  margin: 0 auto; /* コンテナを中央揃え */
-  padding: 0; /* 不要なパディングをリセット */
+  gap: 20px;
+  width: calc(100% - 7vw);
+  max-width: 200vh;
+  margin: 0 auto;
+  padding: 0;
 }
 
-/* グリッドアイテムのスタイル（親要素） */
+/* グリッドアイテムのスタイル */
 .grid-item {
-  flex: 1 1 calc(33.333% - 20px); /* アイテムが利用可能な空間を均等に分配 */
-  background-color: rgba(114, 136, 177, 0.2); /* 背景色 */
-  border-radius: 10px; /* 角を丸める */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を付ける */
-  overflow: hidden; /* 子要素がはみ出ないようにする */
-  position: relative; /* 子要素の絶対位置指定の基準 */
-  align-items: flex-start; /* 子要素を上部に揃える */
-
+  flex: 1 1 calc(33.333% - 20px);
+  background-color: rgba(114, 136, 177, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
-/* 各グリッドアイテム内のテキストスタイル */
+/* テキストスタイル */
 .grid-item h5, 
 .grid-item a {
   font-family: 'Hina Mincho', serif;
-  font-size: clamp(0.5rem, 1.3vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 1.3vw, 2em);
   margin: 10px 0;
-  padding: 0.2em 1vw;
+  padding: 0.2em 0vw;
   color: #CFB06A;
-  flex-grow: 1; 
 }
 
 /* 画像のスタイル */
 .grid-item img {
-  width: 100%; /* 親要素に対して100%の幅 */
-  height: auto; /* 高さを自動調整 */
-  padding: 0; /* 余白を取り除く */
-  object-fit: contain; /* 画像が親要素内で収まるようにする */
-  display: block; /* インライン要素からブロック要素に変更 */
-  align-self: flex-start; /* フレックスアイテム内で上部に配置 */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+  padding: 0;
+  display: block;
+  align-self: flex-start; /* フレックスアイテムの上に揃える */
 }
 
 /* メディアクエリでのレスポンシブ対応 */
