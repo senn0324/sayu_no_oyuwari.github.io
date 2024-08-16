@@ -39,7 +39,7 @@ header {
   margin: 0; /* 外側の余白をなくす */
   padding: 0 2em; /* 左右に20pxの内側余白を追加 */
   text-align: start; /* 左揃え */
-  font-size: 1.5em; /* フォントサイズ */
+  font-size: clamp(2rem, 3vw, 3em); /* 最小,画面幅何%,最大*/
   color: #3A555F; /* テキストの色 */
 }
 
@@ -68,40 +68,11 @@ header {
 }
 
 /* メディアクエリでレスポンシブデザインを実装 */
-@media (max-width: 950px) {
-  header {
-    flex-direction: column; /* ヘッダー内の要素を縦方向に配置 */
-    
-  }
-
-  .headline {
-    padding: 0 2em; /* 内側余白を調整 */
-    font-size: 3vw; /* ビューポート幅に基づいてフォントサイズを設定 */
-  }
-
-  .nav-list {
-    padding: 0 1em; /* 内側余白を調整 */
-    justify-content: flex-start; /* 左揃え */
-    flex-wrap: wrap; /* ナビゲーションリストを折り返し可能に */
-  }
-
-  .nav-list-item {
-    margin: 1em 0; /* 各アイテムの上下に余白を追加 */
-    font-size: 2.5vw; /* ビューポート幅に基づいてフォントサイズを設定 */
-  }
-}
-
-/* メディアクエリでレスポンシブデザインを実装 */
-@media (max-width: 1080px) {
+@media (max-width: 1440px) {
 
   header {
     flex-direction: column; /* ヘッダー内の要素を縦方向に配置 */
     
-  }
-
-  .headline {
-    padding: 0 3em; /* 左右に余裕を持たせる */
-    font-size: 1em; /* フォントサイズを縮小 */
   }
 
   .nav-list-item {
@@ -123,9 +94,8 @@ main {
 }
 
 summary {
-  margin: 0em 0em;
-  padding: 0em 0em;
-  text-align: left; /* テキストの左揃えを指定 */
+  margin: 0;
+  padding: 0;
 }
 
 .main-item {
@@ -155,19 +125,16 @@ summary {
 .main-text-h3 {
   font-family: 'RocknRoll One', sans-serif; /* フォント設定 */
   font-size: clamp(1rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
-  margin: 1em 3em; /* 外側の余白を上下に追加 */
+  margin: 1em 4vw; /* 外側の余白を上下に追加 */
   padding: 0 1em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   color: #CFB06A; /* テキストの色 */
-}
-.indent {
-  text-indent: 5vw; /* インデントの幅を指定 */
 }
 
 .main-text-h4 {
   font-family: 'Hina Mincho', serif; /* フォント設定 */
   font-size: clamp(0.8rem, 3vw, 2em); /* 最小,画面幅何%,最大*/
-  margin: 0em 4vw; /* 外側の余白をなくす */
+margin: 0em 6vw !important;
   padding: 0 1.5em; /* 左右に内側余白を追加 */
   text-align: start; /* 左揃え */
   margin: 10px 0; /* 上下に余白を追加 */
@@ -302,16 +269,16 @@ summary {
 }
 
 /* 画面サイズが1024ピクセル以下の場合 */
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
   .swiper-container {
     width: 100%; /* 幅を100%に設定 */
   }
 }
 
 /* 画面サイズが1024ピクセル以上の場合 */
-@media (min-width: 1025px) {
+@media (min-width: 1441px) {
   .swiper-container {
-    width: 1024px; /* 幅を1024pxに設定 */
+    width: 1441px; /* 幅を1024pxに設定 */
   }
 }
 
@@ -393,7 +360,7 @@ footer {
 }
 
 /* スマホの場合のスタイル */
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
   footer {
     width: 100%; /* スマホでは幅を100%に設定 */
     right: 0; /* 右端に配置 */
