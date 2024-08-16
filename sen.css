@@ -92,7 +92,7 @@ header {
 }
 
 /* メディアクエリでレスポンシブデザインを実装 */
-@media (max-width: 950px) {
+@media (max-width: 1080px) {
 
   header {
     flex-direction: column; /* ヘッダー内の要素を縦方向に配置 */
@@ -278,7 +278,7 @@ summary {
   }
 .grid-item h5,
 .grid-item a {
-  font-size: clamp(0.5rem, 2vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.3rem, 2vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
 
