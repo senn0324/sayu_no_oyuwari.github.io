@@ -221,6 +221,7 @@ margin: 0em 6vw !important;
   position: relative; /* z-indexを有効にするためにpositionをrelativeに設定 */
 }
 
+
 /* 画像のスタイル */
 .grid-item img {
   width: 100%;
