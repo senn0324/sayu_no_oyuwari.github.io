@@ -262,13 +262,13 @@ summary {
 }
 
 /* メディアクエリでのレスポンシブ対応 */
-@media (max-width: 1500px) {
+@media (max-width: 1200px) {
   .grid-item {
     flex: 1 1 calc(50% - 20px); /* 画面幅が1500px以下の場合、2列に */
   }
 .grid-item h5,
 .grid-item a  {
-  font-size: clamp(0.5rem, 2vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 2vw, 1.5em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
 
@@ -278,7 +278,7 @@ summary {
   }
 .grid-item h5,
 .grid-item a {
-  font-size: clamp(0.5rem, 3vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 2vw, 2em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
 
