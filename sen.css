@@ -249,7 +249,7 @@ margin: 0em 6vw !important;
   }
 .grid-item h5,
 .grid-item a  {
-  font-size: clamp(0.5rem, 1.4vw, 1.5em); /* フレックスボックスに応じた動的なフォントサイズ */
+  font-size: clamp(0.5rem, 1.3vw, 1.5em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
 }
 
