@@ -189,8 +189,10 @@ margin: 0em 6vw !important;
 }
 
 /* メディアクエリでのレスポンシブ対応 */
-@main-image (max-width: 1200px) {
-  height: 100vw; /* 任意の高さを指定 */
+@media (max-width: 1200px) {
+  .main-image {
+    height: 100vw; /* 画面の幅に基づいて高さを設定 */
+  }
 }
 
 
