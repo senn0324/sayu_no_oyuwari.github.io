@@ -178,7 +178,6 @@ margin: 0em 6vw !important;
 }
 
 
-
 /* 画像のスタイル */
 .main-image {
   width: 100%; /* 任意の幅を指定 */
@@ -188,6 +187,12 @@ margin: 0em 6vw !important;
   margin-bottom: 1em; /* 画像の下にスペースを追加（必要に応じて） */
 
 }
+
+/* メディアクエリでのレスポンシブ対応 */
+@main-image (max-width: 1200px) {
+  height: 100vw; /* 任意の高さを指定 */
+}
+
 
 /* グリッドコンテナのスタイル */
 .grid-container {
