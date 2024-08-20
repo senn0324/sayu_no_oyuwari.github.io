@@ -169,40 +169,23 @@ margin: 0em 6vw !important;
   transition: font-size 0.5s ease, color 0.5s ease; /* サイズ変化と色のアニメーション */
 }
 
-/* Main コンテナのスタイル */
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0px;
+  height: auto; /* 必要に応じて高さを自動に設定 */
+  max-height: none; /* 最大高さの制限を解除 */
 }
 
 
 /* 画像のスタイル */
 .main-image {
-  width: 100%; /* 任意の幅を指定 */
-  height: 60vw; /* 任意の高さを指定 */
+  width: 100%; /* 幅を100%に設定 */
+  height: 60vw; /* 高さを60vwに設定 */
   object-fit: cover; /* 画像が指定されたサイズに収まるように調整 */
   display: block;
-  margin-bottom: 1em; /* 画像の下にスペースを追加（必要に応じて） */
-
-}
-
-/* メディアクエリでのレスポンシブ対応 */
-@media (max-width: 1200px) {
-
-}
-
-
-/* グリッドコンテナのスタイル */
-.grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: calc(100% - 20vw);
-  max-width: 200vh;
-  margin: 0 auto;
-  padding: 0;
+  margin-bottom: 1em;
 }
 
 /* グリッドアイテムのスタイル */
@@ -250,10 +233,11 @@ margin: 0em 6vw !important;
 /* メディアクエリでのレスポンシブ対応 */
 @media (max-width: 1200px) {
   .main-image {
-    height: 40vw; /* 画面の幅に基づいて高さを設定 */
+    height: auto; /* 画像の高さを自動にして、切れないようにする */
+    max-height: 60vw; /* 画像の最大高さを設定 */
   }
   main {
-    padding-top: 8em; /* 上部に追加のパディングを設定して、開始位置を下げる */
+     margin-top: 8vw; /* 上部にマージンを追加して、mainを下にずらす */
   }
   .grid-item {
     flex: 1 1 calc(50% - 20px); /* 画面幅が1500px以下の場合、2列に */
@@ -262,6 +246,16 @@ margin: 0em 6vw !important;
 .grid-item a  {
   font-size: clamp(0.5rem, 1.3vw, 1.5em); /* フレックスボックスに応じた動的なフォントサイズ */
   }
+  
+/* グリッドコンテナのスタイル */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: calc(100% - 20vw);
+  max-width: 200vh;
+  margin: 0 auto;
+  padding: 0;
 }
 
 @media (max-width: 1024px) {
