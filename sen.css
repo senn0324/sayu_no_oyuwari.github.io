@@ -191,7 +191,7 @@ margin: 0em 6vw !important;
 /* メディアクエリでのレスポンシブ対応 */
 @media (max-width: 1200px) {
   .main-image {
-    height: 100vw; /* 画面の幅に基づいて高さを設定 */
+    height: 70vw; /* 画面の幅に基づいて高さを設定 */
   }
 }
 
