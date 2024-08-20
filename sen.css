@@ -190,9 +190,7 @@ margin: 0em 6vw !important;
 
 /* メディアクエリでのレスポンシブ対応 */
 @media (max-width: 1200px) {
-  .main-image {
-    height: 40vw; /* 画面の幅に基づいて高さを設定 */
-  }
+
 }
 
 
@@ -251,6 +249,12 @@ margin: 0em 6vw !important;
 
 /* メディアクエリでのレスポンシブ対応 */
 @media (max-width: 1200px) {
+  .main-image {
+    height: 40vw; /* 画面の幅に基づいて高さを設定 */
+  }
+  main {
+    padding-top: 8em; /* 上部に追加のパディングを設定して、開始位置を下げる */
+  }
   .grid-item {
     flex: 1 1 calc(50% - 20px); /* 画面幅が1500px以下の場合、2列に */
   }
