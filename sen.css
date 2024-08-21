@@ -103,7 +103,7 @@ header {
 
   .flex-item h5,
   .flex-item a {
-    font-size: clamp(0.5rem, 1.5vw, 5em);
+  font-size: clamp(0.8em, 2vw, 3em)!important;
   }
 
   .swiper-container {
@@ -234,7 +234,7 @@ summary {
 .flex-item h5,
 .flex-item a {
   font-family: 'Hina Mincho', serif;
-  font-size: clamp(0.5rem, 1vw, 3em);
+  font-size: clamp(0.8rem, 1vw, 2.5em);
   margin: 10px 0;
   padding: 0.2em 0vw;
   color: #CFB06A;
