@@ -103,7 +103,7 @@ header {
 
   .flex-item h5,
   .flex-item a {
-  font-size: clamp(0.8em, 2vw, 3em)!important;
+  font-size: clamp(0.8em,1.6vw, 3em)!important;
   }
 
   .swiper-container {
