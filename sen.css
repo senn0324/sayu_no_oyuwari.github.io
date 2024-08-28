@@ -124,6 +124,7 @@ summary {
   font-size: clamp(0.8rem, 3vw, 2em);
   margin: 10px 0;
   padding: 0 1.5em;
+  background-color: #3A555F;
 }
 
 .main-text-h5 {
