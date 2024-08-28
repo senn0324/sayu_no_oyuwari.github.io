@@ -166,11 +166,12 @@ summary {
   height: auto;
   max-height: none;
   justify-content: space-evenly;  /* 横の位置指定 */
+  flex-wrap: wrap; /* 折返し指定 */
   
 }
 
 .flex-item {
-  flex:calc(33.333% - 30vw);
+  flex: 1 1 calc(33.333% - 2vw); /* パーセンテージベースで幅を調整 */
   background-color: rgba(114, 136, 177, 0.2);
   border-radius: 10px;
   overflow: hidden;
@@ -291,6 +292,7 @@ summary {
 
   .flex-item {
     margin: 0 1em 1em;
+  flex:calc(1003% - 30vw);
   }
 
   .flex-item h5,
