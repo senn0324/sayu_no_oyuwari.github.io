@@ -377,6 +377,7 @@
           <h5>【禁止事項】</h5>
           <h5>・画像そのものの商用利用</h5>
           <h5>・二次配布</h5>
+          <h5>・法律に違反する使用方法</h5>
 
         </li>
         <li class="flex-item">
@@ -391,8 +392,8 @@
           <h5>・作者名の記載</h5>
           <h5>・使用方法に迷った時に連絡</h5>
           <h5></h5>
-          <h5>【フォローしてないこと】</h5>
-          <h5>・サイト内にあげた画像をこちらで保管する等</h5>
+          <h5>【対応してないこと】</h5>
+          <h5>・サイト内にあげた画像の保管</h5>
           <h5>・素材を使ったことによるトラブル対応</h5>
         </li>
      </ul>
@@ -440,7 +441,16 @@
         <h5>各種ボタンを押してください。</h5>
         <h5>　アップロードした画像を</h5>
         <h5>サーバー等で保管することはありません。</h5>
+        <h5></h5>
+        <h5>画像を2016*2016に収縮</h5>
+        <h5>→webpに変換という処理を行っています。</h5>
     	<input type="file" id="imageUpload" accept=".jpg, .jpeg, .png, .webp">
+
+        </li>
+        
+        <li class="flex-item">
+    	<button class="btn" onclick="processImage('立ち絵適正サイズ化')">立ち絵適正サイズ化</button>
+        </li>
 
         </li>
         
@@ -721,7 +731,7 @@ const img = new Image();
 img.onload = function () {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    const maxSize = 1080;
+    const maxSize = 2016;
     let width = img.width;
     let height = img.height;
 
@@ -787,7 +797,7 @@ throw new Error('SVGファイルの取得に失敗しました。ステータス
 })
 .catch(error => {
     console.error('エラーが発生しました:', error);
-    alert('SVGファイルの読み込みまたは編集中にエラーが発生しました。コンソールを確認してください。');
+    alert('SVGファイルの読み込みまたは編集中にエラーが発生しました。');
 });
 }
     </script>
