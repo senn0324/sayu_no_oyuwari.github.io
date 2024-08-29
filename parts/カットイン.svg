@@ -2,13 +2,16 @@
 
 <defs>
 
+<g id="画像">
 	<image x="0" y="0" width="100" height="100" href="data:image/svg+xml;base64,
 	
 	あなたのBase64コード
 	
 	" />
-
+</g>
 </defs>
 
+<use href="#画像" xlink:href="#画像" x="160" y="160">
+</use>
 
 </svg>
