@@ -442,12 +442,20 @@
         <h5>　アップロードした画像を</h5>
         <h5>サーバー等で保管することはありません。</h5>
         <h5></h5>
+        <h5>　jpg/pngは自動で2016×2016に縮小し</h5>
+        <h5>webpに変換、SVGファイル内で使用します。</h5>
+        <h5></h5>
+        <h5>apng/webpはアニメーションを活かす為</h5>
+        <h5>縮小処理を行いません。</h5>
+        <h5>ご自身で2016×2016に変換してから使用してください。</h5>
+        <h5></h5>
+        <h5>byte数が大きいファイルの処理には時間がかかります。</h5>
     	<input type="file" id="imageUpload" accept=".jpg, .jpeg, .png, .webp">
 
         </li>
         
         <li class="flex-item">
-        <h5>　webp変換後、base64に変換、SVGに格納</h5>
+        <h5>　SVG用のコードに変換</h5>
     	<button class="btn" onclick="processImage('立ち絵適正サイズ化')">テスト用</button>
         </li>
 
