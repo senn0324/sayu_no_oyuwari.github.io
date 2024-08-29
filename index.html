@@ -731,49 +731,35 @@ function processImage(action) {
         img.onload = function () {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            const maxSize = 2016;
-            let width = img.width;
-            let height = img.height;
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
 
-            if (width > height) {
-                if (width > maxSize) {
-                    height *= maxSize / width;
-                    width = maxSize;
-                }
+            // JPEGやPNGの場合はWebPに変換
+            if (file.type === 'image/jpeg' || file.type === 'image/png') {
+                canvas.toBlob(function (blob) {
+                    convertToBase64(blob, action, 'image/webp');
+                }, 'image/webp');
             } else {
-                if (height > maxSize) {
-                    width *= maxSize / height;
-                    height = maxSize;
-                }
+                // それ以外（アニメーション画像など）の場合はそのままbase64エンコード
+                convertToBase64(file, action, file.type);
             }
-
-            canvas.width = width;
-            canvas.height = height;
-
-            // 画像をキャンバスの中央に配置する
-            const offsetX = (canvas.width - width) / 2;
-            const offsetY = (canvas.height - height) / 2;
-            ctx.drawImage(img, offsetX, offsetY, width, height);
-
-            canvas.toBlob(function (blob) {
-                convertToBase64(blob, action);
-            }, 'image/webp');
         };
         img.src = event.target.result;
     };
     reader.readAsDataURL(file);
 }
 
-function convertToBase64(blob, action) {
+function convertToBase64(fileOrBlob, action, mimeType) {
     const reader = new FileReader();
     reader.onloadend = function () {
         const base64data = reader.result.split(',')[1];
-        editAndDownloadSVG(base64data, action);
+        editAndDownloadSVG(base64data, action, mimeType);
     };
-    reader.readAsDataURL(blob);
+    reader.readAsDataURL(fileOrBlob);
 }
 
-function editAndDownloadSVG(base64data, action) {
+function editAndDownloadSVG(base64data, action, mimeType) {
     const svgFilePath = `parts/${action}.svg`;
 
     fetch(svgFilePath)
@@ -784,24 +770,8 @@ function editAndDownloadSVG(base64data, action) {
             return response.text();
         })
         .then(svgContent => {
-            // SVGの中身を書き換えつつアニメーションを保持
-            const parser = new DOMParser();
-            const svgDoc = parser.parseFromString(svgContent, "image/svg+xml");
-            
-            // <image>要素を取得または作成
-            let imageElement = svgDoc.querySelector('image');
-            if (!imageElement) {
-                imageElement = svgDoc.createElementNS('http://www.w3.org/2000/svg', 'image');
-                svgDoc.documentElement.appendChild(imageElement);
-            }
-
-            // 新しい画像データを設定
-            imageElement.setAttributeNS('http://www.w3.org/1999/xlink', 'href', `data:image/webp;base64,${base64data}`);
-            imageElement.setAttribute('width', '100%');  // 必要に応じてサイズ調整
-            imageElement.setAttribute('height', '100%');
-            imageElement.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-
-            const modifiedSVGContent = new XMLSerializer().serializeToString(svgDoc);
+            // SVGの中身を書き換え (href属性にbase64データを埋め込む)
+            const modifiedSVGContent = svgContent.replace(/href="[^"]*"/, `href="data:${mimeType};base64,${base64data}"`);
 
             const svgBlob = new Blob([modifiedSVGContent], { type: 'image/svg+xml' });
             const url = URL.createObjectURL(svgBlob);
