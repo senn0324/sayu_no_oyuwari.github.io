@@ -12,6 +12,8 @@
  <meta name="og:Title" content="白湯のお湯割り">
  <meta name="description" content="APNG/WEBP/SVG等のアニメーション画像作成専門店">
  <meta name="og:image" content="pic/リンクカード.png">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
  <!-- 各種フォント -->
  <!-- Yuji Mai -->
@@ -73,7 +75,7 @@
 <main class="main">
 
 <article class="main-container" target="_blank">
-  <img src="pic/和風部屋入室.svg" alt="動作確認用" oncontextmenu="return false;" class="main-image">
+  <img src="pic/和風部屋入室.svg" alt="和風部屋" oncontextmenu="return false;" class="main-image">
 </article>
 <!-- 作品 -->
 <article>
@@ -385,9 +387,13 @@
                    
         </li>        
         <li class="flex-item">
-          <h5>【してもらえると嬉しい事】(強制ではない)</h5>
+          <h5>【してもらえると嬉しい事】</h5>
           <h5>・作者名の記載</h5>
           <h5>・使用方法に迷った時に連絡</h5>
+          <h5></h5>
+          <h5>【フォローしてないこと】</h5>
+          <h5>・サイト内にあげた画像をこちらで保管する等</h5>
+          <h5>・素材を使ったことによるトラブル対応</h5>
         </li>
      </ul>
 
@@ -424,6 +430,21 @@
 
   </details>
 
+    <details>
+    <summary class="main-text-h4">画像作成所</summary>
+
+     <ul class="flex-container">
+        <li class="flex-item">
+    	<input type="file" id="imageUpload" accept=".jpg, .jpeg, .png, .webp">
+    	<button class="btn" onclick="processImage('cutin')">カットイン</button>
+    	<button class="btn" onclick="processImage('critical')">クリティカル</button>
+    	<button class="btn" onclick="processImage('fumble')">ファンブル</button>
+
+        </li>
+     </ul>
+
+  </details>
+
 </details>
 </article>
 
@@ -437,15 +458,16 @@
 
      <ul class="flex-container">
         <li class="flex-item">
-          <h5>他店の商品までよくなって</h5>
+          <h5>　他店の商品までよくなって</h5>
           <h5>みんなが動く素材を使えたら</h5>
           <h5>それってとってもハッピーな事。</h5>
-          <h5>きれいなお部屋が</h5>
+          <h5>　きれいなお部屋が</h5>
           <h5>かくついてしまうのは悲しいから。</h5>
           <h5></h5>
           <h5>　キャンパスサイズから、拡張子まで</h5>
-          <h5>おすすめ方法を一挙公開！</h5>
-          <h5>3000いいねを突破した内容はこちらから</h5>
+          <h5>おすすめな処理を一挙公開！</h5>
+          <h5>　Xで3800ブックマークを突破した</h5>
+          <h5>驚きの内容はこちらから</h5>
         </li>
         
 		<li class="flex-item">
@@ -668,6 +690,91 @@ var thumbs = new Swiper('#thumbs', {
 // メインスライダーとサムネイルスライダーを同期させる
 slider.params.control = thumbs;
 thumbs.params.control = slider;
+
+
+
+function processImage(action) {
+    const fileInput = document.getElementById('imageUpload');
+    const file = fileInput.files[0];
+    if (!file) {
+alert('画像をアップロードしてください。');
+return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (event) {
+const img = new Image();
+img.onload = function () {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const maxSize = 1080;
+    let width = img.width;
+    let height = img.height;
+
+    if (width > height) {
+if (width > maxSize) {
+    height *= maxSize / width;
+    width = maxSize;
+}
+    } else {
+if (height > maxSize) {
+    width *= maxSize / height;
+    height = maxSize;
+}
+    }
+
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(img, 0, 0, width, height);
+
+    canvas.toBlob(function (blob) {
+convertToBase64(blob, action);
+    }, 'image/webp');
+};
+img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function convertToBase64(blob, action) {
+    const reader = new FileReader();
+    reader.onloadend = function () {
+const base64data = reader.result.split(',')[1];
+editAndDownloadSVG(base64data, action);
+    };
+    reader.readAsDataURL(blob);
+}
+
+function editAndDownloadSVG(base64data, action) {
+    const svgFilePath = `parts/${action}.svg`;
+
+    fetch(svgFilePath)
+.then(response => response.text())
+.then(svgContent => {
+    // SVGの中身を書き換え
+    const modifiedSVGContent = svgContent.replace(/href="[^"]*"/, `href="data:image/webp;base64,${base64data}"`);
+
+    const svgBlob = new Blob([modifiedSVGContent], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(svgBlob);
+
+    // 自動的にダウンロードを開始
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = `${action}.svg`;
+    downloadLink.click();
+
+    // ダウンロードが完了した後にURLオブジェクトを解放
+    URL.revokeObjectURL(url);
+})
+.catch(error => {
+    console.error('SVGファイルの読み込みに失敗しました: ', error);
+    alert('指定されたSVGファイルの読み込みに失敗しました。');
+});
+}
+
+});
+
+
 
 </script>
 
