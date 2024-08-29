@@ -749,7 +749,12 @@ function editAndDownloadSVG(base64data, action) {
     const svgFilePath = `parts/${action}.svg`;
 
     fetch(svgFilePath)
-.then(response => response.text())
+.then(response => {
+    if (!response.ok) {
+throw new Error('SVGファイルの取得に失敗しました。ステータスコード: ' + response.status);
+    }
+    return response.text();
+})
 .then(svgContent => {
     // SVGの中身を書き換え
     const modifiedSVGContent = svgContent.replace(/href="[^"]*"/, `href="data:image/webp;base64,${base64data}"`);
@@ -767,16 +772,11 @@ function editAndDownloadSVG(base64data, action) {
     URL.revokeObjectURL(url);
 })
 .catch(error => {
-    console.error('SVGファイルの読み込みに失敗しました: ', error);
-    alert('指定されたSVGファイルの読み込みに失敗しました。');
+    console.error('エラーが発生しました:', error);
+    alert('SVGファイルの読み込みまたは編集中にエラーが発生しました。コンソールを確認してください。');
 });
 }
-
-});
-
-
-
-</script>
+    </script>
 
 </body>
 
